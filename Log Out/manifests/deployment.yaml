@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-out
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-out
+  template:
+    metadata:
+      labels:
+        app: log-out
+    spec:
+      containers:
+        - name: log-output-container
+          image: oleksandr98turku/log_output:latest
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "200m"
+              memory: "256Mi"

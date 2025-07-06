@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-page
+spec:
+  selector:
+    matchLabels:
+      app: web-page
+  template:
+    metadata:
+      labels:
+        app: web-page
+    spec:
+      containers:
+        - name: web-page
+          image: oleksandr98turku/simple-web-get:latest
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "200m"
+              memory: "256Mi"

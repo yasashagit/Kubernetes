@@ -1,9 +1,14 @@
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from flask import Flask
 
-port = 8080
+app = Flask(__name__)
 
-server_address = ("", port)
 
-httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
-print(f"Server started in port:{port}")
-httpd.serve_forever()
+@app.route("/")
+def index():
+    return "<p>Welcome to the To-Do App!</p>"
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
+
+print("To-Do App is running on http://localhost:8080")
